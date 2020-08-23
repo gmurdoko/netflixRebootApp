@@ -17,7 +17,8 @@ import com.squareup.picasso.Picasso
 
 
 class FilmRecycleAdapter (
-    val filmList: List<Film>
+    val filmList: List<Film>,
+    val getActivity: FragmentActivity?
 ): RecyclerView.Adapter<FilmViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmViewHolder {
         val view = LayoutInflater.from(parent.context)
