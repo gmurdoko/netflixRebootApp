@@ -22,7 +22,7 @@ class FilmRepository(val filmApi: FilmAPI) {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 val responseData = response.body()
 
-                if (responseData?.status == "OK") {
+                if (responseData?.status == "200") {
                     val res = responseData.result
                     val gson = Gson()
                     film.value = gson.fromJson(gson.toJson(res), Film::class.java)
@@ -44,9 +44,8 @@ class FilmRepository(val filmApi: FilmAPI) {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 val responseData = response.body()
 
-                if (responseData?.status == "OK"){
+                if (responseData?.status == "200"){
                     val res = responseData.result
-
                     val gson = Gson()
                     filmList.value = gson.fromJson(gson.toJson(res), Array<Film>::class.java).toList()
 

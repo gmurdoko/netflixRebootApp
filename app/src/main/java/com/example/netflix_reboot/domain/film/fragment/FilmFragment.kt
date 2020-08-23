@@ -32,11 +32,12 @@ class FilmFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         film_list_recycle_view.layoutManager = LinearLayoutManager(activity)
+        filmViewModel.getAllFilm()
         filmViewModel.allFilm.observe(viewLifecycleOwner, Observer {
             filmRecycleAdapter = FilmRecycleAdapter(it)
             film_list_recycle_view.adapter = filmRecycleAdapter
         })
-        filmViewModel.getAllFilm()
+
     }
 
 }
