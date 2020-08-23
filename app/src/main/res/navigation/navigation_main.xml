@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_mail.xml"
+    app:startDestination="@id/filmFragment">
+
+    <action
+        android:id="@+id/action_to_filmFragment"
+        app:destination="@id/filmFragment" />
+    <action
+        android:id="@+id/action_to_filmAddFragment"
+        app:destination="@id/filmAddFragment" />
+    <action
+        android:id="@+id/action_to_filmDetailFragment"
+        app:destination="@id/filmDetailFragment" />
+    <fragment
+        android:id="@+id/filmFragment"
+        android:name="com.example.netflix_reboot.domain.film.fragment.FilmFragment"
+        android:label="fragment_film"
+        tools:layout="@layout/fragment_film" />
+    <fragment
+        android:id="@+id/filmAddFragment"
+        android:name="com.example.netflix_reboot.domain.film.fragment.FilmAddFragment"
+        android:label="fragment_film_add"
+        tools:layout="@layout/fragment_film_add" >
+        <action
+            android:id="@+id/action_filmAddFragment_pop"
+            app:destination="@id/filmFragment"
+            app:popUpTo="@id/filmAddFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmDetailFragment"
+        android:name="com.example.netflix_reboot.domain.film.fragment.FilmDetailFragment"
+        android:label="fragment_film_detail"
+        tools:layout="@layout/fragment_film_detail" />
+</navigation>

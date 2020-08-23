@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/showGood"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_slideshow_24"
+        android:title="Show Data" />
+    <item
+        android:id="@+id/createGood"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_add_box_24"
+        android:title="Create Data" />
+
+</menu>
