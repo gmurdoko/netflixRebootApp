@@ -12,7 +12,6 @@ import retrofit2.Response
 class FilmRepository(val filmApi: FilmAPI) {
     val film: MutableLiveData<Film> = MutableLiveData<Film>()
     val filmList: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
-
     fun getFilmByID(id: String) {
         filmApi.getFilmByID(id).enqueue(object : Callback<ResponseData> {
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {
@@ -34,7 +33,6 @@ class FilmRepository(val filmApi: FilmAPI) {
 
         })
     }
-
     fun getAllFilm(){
         filmApi.getAllData().enqueue(object : Callback<ResponseData>{
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {
@@ -54,7 +52,6 @@ class FilmRepository(val filmApi: FilmAPI) {
 
         })
     }
-
     fun createFilm(film: Film) {
         filmApi.createFilm(film).enqueue(object : Callback<ResponseData> {
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {
@@ -70,5 +67,4 @@ class FilmRepository(val filmApi: FilmAPI) {
             }
         })
     }
-
 }

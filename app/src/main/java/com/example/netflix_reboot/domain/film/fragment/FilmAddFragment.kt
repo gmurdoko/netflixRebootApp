@@ -5,21 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import com.example.netflix_reboot.container.AppContainer
+import com.example.netflix_reboot.MyApplication
 import com.example.netflix_reboot.R
 import com.example.netflix_reboot.domain.film.model.Film
-import com.example.netflix_reboot.domain.film.view_model.FilmViewModel
 import kotlinx.android.synthetic.main.fragment_film_add.*
 
 
 class FilmAddFragment : Fragment() {
 
-    private val filmViewModel by activityViewModels<FilmViewModel>()
-
+//    private val filmViewModel by activityViewModels<FilmViewModel>()
+    lateinit var appContainer: AppContainer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        appContainer = (activity?.application as MyApplication).appContainer
     }
 
     override fun onCreateView(
@@ -38,7 +38,7 @@ class FilmAddFragment : Fragment() {
                 , duration = input_film_duration.text.toString()
                 , imageUrl = input_image_url.text.toString()
                 , synopsis = input_film_synopsis.text.toString())
-            filmViewModel.createFilm(newFilm)
+            appContainer.filmViewModel.createFilm(newFilm)
             Navigation.findNavController(view).navigate(R.id.action_filmAddFragment_pop)
         }
     }
