@@ -8,15 +8,18 @@ import androidx.navigation.ui.NavigationUI
 import com.example.netflix_reboot.container.AppContainer
 import com.example.netflix_reboot.MyApplication
 import com.example.netflix_reboot.R
+import com.example.netflix_reboot.domain.film.view_model.FilmViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
-    lateinit var appContainer: AppContainer
+
+    @Inject lateinit var filmViewModel: FilmViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appContainer = (application as MyApplication).appContainer
 
+        (applicationContext as MyApplication).applicationComponent.inject(this)
         setContentView(R.layout.activity_main)
         navController = (nav_main_host_fragment_container as NavHostFragment).navController
         NavigationUI.setupWithNavController(bottom_navigation, navController)

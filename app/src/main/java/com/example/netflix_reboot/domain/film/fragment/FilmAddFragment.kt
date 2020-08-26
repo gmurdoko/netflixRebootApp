@@ -10,16 +10,17 @@ import com.example.netflix_reboot.container.AppContainer
 import com.example.netflix_reboot.MyApplication
 import com.example.netflix_reboot.R
 import com.example.netflix_reboot.domain.film.model.Film
+import com.example.netflix_reboot.domain.film.view_model.FilmViewModel
 import kotlinx.android.synthetic.main.fragment_film_add.*
+import javax.inject.Inject
 
 
 class FilmAddFragment : Fragment() {
 
-//    private val filmViewModel by activityViewModels<FilmViewModel>()
-    lateinit var appContainer: AppContainer
+    @Inject lateinit var filmViewModel: FilmViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appContainer = (activity?.application as MyApplication).appContainer
+        (activity?.applicationContext as MyApplication).applicationComponent.inject(this)
     }
 
     override fun onCreateView(
@@ -38,7 +39,7 @@ class FilmAddFragment : Fragment() {
                 , duration = input_film_duration.text.toString()
                 , imageUrl = input_image_url.text.toString()
                 , synopsis = input_film_synopsis.text.toString())
-            appContainer.filmViewModel.createFilm(newFilm)
+            filmViewModel.createFilm(newFilm)
             Navigation.findNavController(view).navigate(R.id.action_filmAddFragment_pop)
         }
     }

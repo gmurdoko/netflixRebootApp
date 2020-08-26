@@ -6,13 +6,11 @@ import com.example.netflix_reboot.config.retrofit.RetrofitBuilder
 import com.example.netflix_reboot.domain.film.api.FilmAPI
 import com.example.netflix_reboot.domain.film.model.Film
 import com.example.netflix_reboot.domain.film.repository.FilmRepository
-//(val filmRepository: FilmRepository)
-class FilmViewModel(val filmRepository: FilmRepository) : ViewModel() {
-//    private val filmRepository: FilmRepository
-//    init {
-//        val filmApi = RetrofitBuilder.createRetrofit().create(FilmAPI::class.java)
-//        filmRepository = FilmRepository(filmApi)
-//    }
+import javax.inject.Inject
+
+
+class FilmViewModel @Inject constructor(val filmRepository: FilmRepository): ViewModel()  {
+
     val  film: LiveData<Film> = filmRepository.film
     val allFilm : LiveData<List<Film>> = filmRepository.filmList
     fun getFilmByID(id: String){

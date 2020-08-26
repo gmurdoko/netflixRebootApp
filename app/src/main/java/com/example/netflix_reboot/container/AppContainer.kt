@@ -6,11 +6,11 @@ import com.example.netflix_reboot.domain.film.repository.FilmRepository
 import com.example.netflix_reboot.domain.film.view_model.FilmViewModel
 
 class AppContainer {
-    private val filmApi = RetrofitBuilder.createRetrofit().create(FilmAPI::class.java)
-    private val filmRepository: FilmRepository = FilmRepository(filmApi)
-    val filmViewModelFactory : FilmViewModelFactory =
-        FilmViewModelFactory(filmRepository)
-    val filmViewModel : FilmViewModel = filmViewModelFactory.create()
+//    private val filmApi = RetrofitBuilder.createRetrofit().create(FilmAPI::class.java)
+//    private val filmRepository: FilmRepository = FilmRepository(filmApi)
+//    val filmViewModelFactory : FilmViewModelFactory =
+//        FilmViewModelFactory(filmRepository)
+//    val filmViewModel : FilmViewModel = filmViewModelFactory.create()
 
 }
 
